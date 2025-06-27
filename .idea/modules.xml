@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../introToOOP/.idea/introToOOP.iml" filepath="$PROJECT_DIR$/../introToOOP/.idea/introToOOP.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/php-polymorphism.iml" filepath="$PROJECT_DIR$/.idea/php-polymorphism.iml" />
     </modules>
   </component>
