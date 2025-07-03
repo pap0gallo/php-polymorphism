@@ -1,6 +1,8 @@
 <?php
 
-namespace App;
+namespace App\L10\src;
+
+require __DIR__ . '/../../../vendor/autoload.php';
 
 class InMemoryKV implements KeyValueStorageInterface
 {
@@ -31,14 +33,22 @@ class InMemoryKV implements KeyValueStorageInterface
         return $this->map;
     }
 
-    public function __serialize()
-    {
-    }
-    public function __unserialize($data)
-    {
-    }
+//    public function __serialize()
+//    {
+//    }
+//    public function __unserialize($data)
+//    {
+//    }
 
     // BEGIN (write your solution here)
+    public function serialize()
+    {
+        return json_encode($this->map);
+    }
 
+    public function unserialize(string $data)
+    {
+        $this->map = json_decode($data, true);
+    }
     // END
 }
