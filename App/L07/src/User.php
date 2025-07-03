@@ -1,6 +1,8 @@
 <?php
 
-namespace App;
+namespace App\L07\src;
+
+require __DIR__ . '/../../../vendor/autoload.php';
 
 class User
 {
@@ -11,7 +13,9 @@ class User
     {
         $this->email = $email;
         // BEGIN (write your solution here)
-
+        is_null($currentSubscription)
+            ? $this->currentSubscription = new FakeSubscription($this->isAdmin())
+            : $this->currentSubscription = new Subscription($email);
         // END
     }
 
