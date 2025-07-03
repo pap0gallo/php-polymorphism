@@ -4,8 +4,9 @@ namespace App\L06\src\swapKeyValue;
 
 require __DIR__ . '/../../../vendor/autoload.php';
 
-// BEGIN (write your solution here)
 use App\L06\src\InMemoryKV;
+
+// BEGIN (write your solution here)
 
 function swapKeyValue(InMemoryKV $obj): void
 {
