@@ -16,14 +16,16 @@ class Normal
 
     private function horizontalChecker()
     {
-        foreach (array_reverse($this->field) as $rowIndex => $row) {
-            $colIndex = array_search(null, array_reverse($row));
-            if (is_int($colIndex)) {
-                return [$rowIndex, $colIndex];
-            } else {
-                return false;
+        for ($row = 2; $row > -1; $row--) {
+            $reversedRow = array_reverse($this->field[$row]);
+            $col = array_search(null, $reversedRow);
+
+            if(is_int($col)) {
+                $originalCol = 2 - $col;
+                return [$row, $originalCol];
             }
         }
+        return false;
     }
 
     private function verticalChecker()
