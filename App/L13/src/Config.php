@@ -1,6 +1,8 @@
 <?php
 
-namespace App;
+namespace App\L13\src;
+
+require __DIR__ . '/../../../vendor/autoload.php';
 
 class Config
 {
