@@ -1,6 +1,8 @@
 <?php
 
-namespace App\tags;
+namespace App\L14\src\tags;
+
+require __DIR__ . '/../../../../vendor/autoload.php';
 
 interface TagInterface
 {
