@@ -1,6 +1,8 @@
 <?php
 
-namespace App;
+namespace App\L15\src;
+
+require __DIR__ . '/../../../vendor/autoload.php';
 
 interface PasswordGeneratorInterface
 {
