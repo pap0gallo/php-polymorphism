@@ -21,9 +21,15 @@ function stringify(array $tag): ?string
         $attributesStrings [] = $key . '="' . $value . '"';
     }
     $attrStr = trim(implode(' ', $attributesStrings));
-    return $tagType === 'single'
-        ? "<$name $attrStr>"
-        : "<$name $attrStr>$body</$name>";
+    if (!empty($attrStr)) {
+        return $tagType === 'single'
+            ? "<$name $attrStr>"
+            : "<$name $attrStr>$body</$name>";
+    } else {
+        return $tagType === 'single'
+            ? "<$name>"
+            : "<$name>$body</$name>";
+    }
 }
 
 print_r(stringify($tag));

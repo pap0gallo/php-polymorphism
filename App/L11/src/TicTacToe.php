@@ -3,7 +3,6 @@
 namespace App\L11\src;
 
 use App\L11\src\strategies\Easy;
-
 use App\L11\src\strategies\Normal;
 
 require __DIR__ . '/../../../vendor/autoload.php';
@@ -22,11 +21,11 @@ class TicTacToe
                 break;
         }
     }
-    public function go($x = null, $y = null)
+    public function go($row = null, $col = null)
     {
-        if (is_int($x) && is_int($y)) {
-            return $this->strategy->setCrossByUser($x, $y);
-        } elseif (is_null($x) && is_null($y)) {
+        if (is_int($row) && is_int($col)) {
+            return $this->strategy->setCrossByUser($row, $col);
+        } elseif (is_null($row) && is_null($col)) {
             return $this->strategy->setOByAI();
         }
     }

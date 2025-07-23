@@ -8,11 +8,11 @@ use App\L09\src\WeatherService;
 use GuzzleHttp\Client;
 
 // BEGIN (write your solution here)
-$cityName = $argv[1] ?? null;
-
-if (!$cityName) {
+if (!$argv[1]) {
     echo "City name is required.\n";
     exit(1);
+} else {
+    $cityName = $argv[1];
 }
 
 $service = new WeatherService(new Client());

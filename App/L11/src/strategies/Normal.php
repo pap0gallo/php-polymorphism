@@ -14,59 +14,45 @@ class Normal
         $this->field = [[null, null, null], [null, null, null], [null, null, null]];
     }
 
-    private function horizontalChecker()
+    private function checker()
     {
-        for ($row = 2; $row > -1; $row--) {
-            $reversedRow = array_reverse($this->field[$row]);
-            $col = array_search(null, $reversedRow);
-
-            if(is_int($col)) {
-                $originalCol = 2 - $col;
-                return [$row, $originalCol];
-            }
-        }
-        return false;
-    }
-
-    private function verticalChecker()
-    {
-        for ($col = 2; $col > -1; $col--) {
-            for ($row = 2; $row > -1; $row--) {
-                if(is_null($this->field[$row][$col])) {
+        for ($row = 2; $row >= 0; $row--) {
+            for ($col = 0; $col <= 2; $col++) {
+                if (is_null($this->field[$row][$col])) {
                     return [$row, $col];
                 }
             }
         }
         return false;
     }
-    public function setCrossByUser($x, $y)
+
+
+    public function setCrossByUser($row, $col)
     {
-        if(is_null($this->field[$x - 1][$y - 1])) {
-            $this->field[$x - 1][$y - 1] = 'x';
+        if (is_null($this->field[$row - 1][$col - 1])) {
+            $this->field[$row - 1][$col - 1] = 'x';
             return $this->checkWinner('x');
         } else {
-            return false; // ход невозможен
+            return false;
         }
     }
 
     public function setOByAI()
     {
-        $horizontalCheck = $this->horizontalChecker();
-        $verticalCheck = $this->verticalChecker();
+        $cell = $this->checker();
 
-        if (is_array($horizontalCheck)) {
-            [$x, $y] = $horizontalCheck;
-        } elseif (is_array($verticalCheck)) {
-            [$x, $y] = $verticalCheck;
-        } else {
-            return false;
+        if (is_array($cell)) {
+            [$row, $col] = $cell;
+            $this->field[$row][$col] = 'o';
+            return $this->checkWinner('o');
         }
-        $this->field[$x][$y] = 'o';
-        return $this->checkWinner('o');
+
+        return false;
     }
     private function checkWinner($symbol)
     {
         // Проверка строк
+
         foreach ($this->field as $row) {
             if ($row[0] === $symbol && $row[1] === $symbol && $row[2] === $symbol) {
                 return true;

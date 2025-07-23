@@ -20,26 +20,28 @@ class HackzillaPasswordGeneratorAdapter implements PasswordGeneratorInterface
     {
         $this->generator->setLength($length);
 
-        $methodMap = [
-            'upperCase' => 'setOptionPasswordUppercase',
-            'lowerCase' => 'setOptionPasswordLowercase',
-            'numbers' => 'setOptionPasswordNumbers',
-            'symbols' => 'setOptionPasswordSymbols',
+        $optionMap = [
+            'upperCase' => ComputerPasswordGenerator::OPTION_UPPER_CASE,
+            'lowerCase' => ComputerPasswordGenerator::OPTION_LOWER_CASE,
+            'numbers' => ComputerPasswordGenerator::OPTION_NUMBERS,
+            'symbols' => ComputerPasswordGenerator::OPTION_SYMBOLS,
         ];
 
-        foreach ($methodMap as $option => $method) {
-            $this->generator->$method(false);
+        if (empty($options)) {
+            $options = ['lowerCase'];
+        }
+
+        foreach ($optionMap as $optionConst) {
+            $this->generator->setOptionValue($optionConst, false);
         }
 
         foreach ($options as $option) {
-            if (isset($methodMap[$option])) {
-                $method = $methodMap[$option];
-                $this->generator->$method(true);
+            if (isset($optionMap[$option])) {
+                $this->generator->setOptionValue($optionMap[$option], true);
             }
         }
 
         return $this->generator->generatePassword();
     }
-
     // END
 }

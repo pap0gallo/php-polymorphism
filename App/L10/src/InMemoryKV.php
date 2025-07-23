@@ -33,12 +33,12 @@ class InMemoryKV implements KeyValueStorageInterface
         return $this->map;
     }
 
-//    public function __serialize()
-//    {
-//    }
-//    public function __unserialize($data)
-//    {
-//    }
+    public function __serialize()
+    {
+    }
+    public function __unserialize($data)
+    {
+    }
 
     // BEGIN (write your solution here)
     public function serialize()

@@ -15,7 +15,7 @@ class User
         // BEGIN (write your solution here)
         is_null($currentSubscription)
             ? $this->currentSubscription = new FakeSubscription($this->isAdmin())
-            : $this->currentSubscription = new Subscription($email);
+            : $this->currentSubscription = $currentSubscription;
         // END
     }
 

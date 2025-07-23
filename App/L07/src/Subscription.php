@@ -6,18 +6,18 @@ require __DIR__ . '/../../../vendor/autoload.php';
 
 class Subscription
 {
-    private $subscriptionPlanName;
+    public string $subscriptionPlanName;
 
-    public function __construct($subscriptionPlanName)
+    public function __construct(string $subscriptionPlanName)
     {
-        $this->subscriptionPlanName = $subscriptionPlanName;
+        $this->subscriptionPlanName = mb_strtolower($subscriptionPlanName);
     }
-    public function hasProfessionalAccess()
+    public function hasProfessionalAccess(): bool
     {
         return $this->subscriptionPlanName === 'professional';
     }
 
-    public function hasPremiumAccess()
+    public function hasPremiumAccess(): bool
     {
         return $this->subscriptionPlanName === 'premium';
     }

@@ -14,53 +14,37 @@ class Easy
         $this->field = [[null, null, null], [null, null, null], [null, null, null]];
     }
 
-    private function horizontalChecker()
+    private function checker()
     {
         foreach ($this->field as $rowIndex => $row) {
             $colIndex = array_search(null, $row);
             if (is_int($colIndex)) {
                 return [$rowIndex, $colIndex];
-            } else {
-                return false;
-            }
-        }
-    }
-
-    private function verticalChecker()
-    {
-        for ($col = 0; $col < 3; $col++) {
-            for ($row = 0; $row < 3; $row++) {
-                if(is_null($this->field[$row][$col])) {
-                    return [$row, $col];
-                }
             }
         }
         return false;
     }
     public function setCrossByUser($x, $y)
     {
-        if(is_null($this->field[$x - 1][$y - 1])) {
+        if (is_null($this->field[$x - 1][$y - 1])) {
             $this->field[$x - 1][$y - 1] = 'x';
             return $this->checkWinner('x');
         } else {
-            return false; // ход невозможен
+            return false;
         }
     }
 
     public function setOByAI()
     {
-        $horizontalCheck = $this->horizontalChecker();
-        $verticalCheck = $this->verticalChecker();
+        $cell = $this->checker();
 
-        if (is_array($horizontalCheck)) {
-            [$x, $y] = $horizontalCheck;
-        } elseif (is_array($verticalCheck)) {
-            [$x, $y] = $verticalCheck;
-        } else {
-            return false;
+        if (is_array($cell)) {
+            [$x, $y] = $cell;
+            $this->field[$x][$y] = 'o';
+            return $this->checkWinner('o');
         }
-        $this->field[$x][$y] = 'o';
-        return $this->checkWinner('o');
+
+        return false;
     }
     private function checkWinner($symbol)
     {

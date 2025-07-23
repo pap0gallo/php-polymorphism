@@ -5,11 +5,11 @@ namespace App\L07\src;
 require __DIR__ . '/../../../vendor/autoload.php';
 
 // BEGIN (write your solution here)
-class fakeSubscription
+class FakeSubscription
 {
     private $bool;
 
-    function __construct($bool)
+    public function __construct($bool)
     {
         $this->bool = $bool;
     }

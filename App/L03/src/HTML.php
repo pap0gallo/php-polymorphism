@@ -14,7 +14,7 @@ $tags = [
 // BEGIN (write your solution here)
 function getLinks($tags)
 {
-    return array_values(array_filter(array_map(function($tag) {
+    return array_values(array_filter(array_map(function ($tag) {
 
         return match ($tag['name']) {
             'img' => $tag['src'] ?? null,

@@ -8,7 +8,7 @@ use App\L06\src\InMemoryKV;
 
 // BEGIN (write your solution here)
 
-function swapKeyValue(InMemoryKV $obj): void
+function swapKeyValue($obj): void
 {
     $startArray = $obj->toArray();
 

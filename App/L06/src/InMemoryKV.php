@@ -13,7 +13,7 @@ class InMemoryKV
         $this->array = $db;
     }
 
-    public function set($key,$value)
+    public function set($key, $value)
     {
         $this->array[$key] = $value;
     }
@@ -25,7 +25,7 @@ class InMemoryKV
 
     public function get($key, $defaultValue = null)
     {
-        if(!array_key_exists($key, $this->array)) {
+        if (!array_key_exists($key, $this->array)) {
             return $defaultValue;
         }
         return $this->array[$key];
@@ -35,6 +35,5 @@ class InMemoryKV
     {
         return $this->array;
     }
-
 }
 // END
